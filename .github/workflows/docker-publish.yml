@@ -58,7 +58,7 @@ jobs:
         run: echo ${{ steps.buildx.outputs.platforms }}
 
       - name: Build image
-        run: docker docker buildx build --platform=linux/amd64,linux/arm64 --load . --file Dockerfile --tag $IMAGE_NAME
+        run: docker buildx build --platform=linux/amd64,linux/arm64 --load . --file Dockerfile --tag $IMAGE_NAME
 
       - name: Log into DockerHub
         run: echo "${{ secrets.DH_PAT }}" | docker login -u fwilhe2 --password-stdin
