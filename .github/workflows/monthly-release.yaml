@@ -38,3 +38,11 @@ jobs:
         docker push fwilhe2/speedtest:${{ steps.bump.outputs.newVersion }}
         docker tag fwilhe2/speedtest:${{ steps.bump.outputs.newVersion }} fwilhe2/speedtest:latest
         docker push fwilhe2/speedtest:latest
+
+    - uses: anchore/sbom-action@v0
+      with:
+        image: fwilhe2/speedtest:${{ steps.bump.outputs.newVersion }}
+
+    - uses: anchore/sbom-action/publish-sbom@v0
+      with:
+        sbom-artifact-match: ".*\\.spdx$"
