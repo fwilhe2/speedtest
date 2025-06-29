@@ -5,6 +5,6 @@ FROM cgr.dev/chainguard/python:latest
 
 WORKDIR /app
 
-COPY --from=builder /usr/local/lib/python3.12/site-packages/speedtest.py speedtest-cli
+COPY --from=builder /usr/local/lib/python3.13/site-packages/speedtest.py speedtest-cli
 
 ENTRYPOINT [ "python", "/app/speedtest-cli" ]
